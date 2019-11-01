@@ -9,7 +9,7 @@
   "scripts": {
     "build": "npm run clean && webpack --config config/webpack-prod-config.js",
     "clean": "rm -rf build/*",
-    "start:dev": "node config/webpack-dev-server.js",
+    "start": "node config/webpack-dev-server.js",
     "start:prod": "npm run build && node config/express-prod-server.js",
     "heroku-postbuild": "npm run start:prod"
   },
