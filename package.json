@@ -10,8 +10,8 @@
     "build": "npm run clean && webpack --config config/webpack-prod-config.js",
     "clean": "rm -rf build/*",
     "start:dev": "node config/webpack-dev-server.js",
-    "start:prod": "npm run build && serve build",
-    "heroku-postbuild": "serve build"
+    "start:prod": "npm run build && node config/express-prod-server.js",
+    "heroku-postbuild": "npm run start:prod"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
