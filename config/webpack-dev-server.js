@@ -1,3 +1,5 @@
+console.log("Starting development server");
+
 const WebpackDevServer = require("webpack-dev-server");
 const webpack = require("webpack");
 const paths = require("./paths");
