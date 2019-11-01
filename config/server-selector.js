@@ -1,9 +1,8 @@
 require('dotenv').config();
 
-console.log(process.env.PIPELINE_STAGE);
-
-if (process.env.PIPELINE_STAGE === "prod") {
-  require('child_process').execSync("npm run build")
+if (process.env.SERVER_MODE === "prod") {
+  if (process.env.IS_LOCAL)
+    require('child_process').execSync("npm run build");
   require("./express-prod-server");
 }
 else
