@@ -1,4 +1,18 @@
 #header {
   width: 100%;
-  background: red;
+  background: #822;
+  height: 2.5rem;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+
+  a {
+    color: white;
+    text-decoration: none;
+    font:  bold 1.5rem arial;
+    padding: 0.5rem 1.5rem;
+    line-height: 1.5rem;
+
+    &:hover, &.active { background: #282; }
+  }
 }
