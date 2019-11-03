@@ -15,6 +15,7 @@ const options = {
     warnings: false,
     errors: true
   },
+  historyApiFallback: true,
   quiet: false,
   noInfo: false,
   contentBase: paths.appAssets,

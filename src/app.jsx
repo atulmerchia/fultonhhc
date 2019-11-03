@@ -12,7 +12,8 @@ const App = () => {
       <Header/>
       <div id="app-wrapper">
         <Switch>
-          <Route path="/" component={Pages.Home} />
+          <Route exact path="/" component={Pages.Home} />
+          <Route path="/social" component={Pages.Social} />
           <Route path="/page-not-found" component={Pages.PageNotFound} />
           <Redirect from="/*" to="/page-not-found"/>
         </Switch>

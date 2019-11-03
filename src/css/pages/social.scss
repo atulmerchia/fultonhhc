@@ -1,0 +1,49 @@
+.social-media-portal {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background: linear-gradient(#fdd, #fbb);
+
+  > .media-col { margin: 0 1rem; }
+
+  .media-col {
+    flex: 1; min-width: 180px; max-width: 500px;
+
+    .logo-space {
+      height: 25vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        height: 50%;
+      }
+
+    }
+
+    &-twitter {
+      overflow: hidden;
+      > div {
+        max-height: 100%;
+      }
+    }
+
+    &-ig {
+      overflow-y: scroll;
+
+      .ig-post {
+        box-shadow: 0 0 0.25rem rgba(0,0,0,0.3);
+        background: white;
+        &:not(:last-of-type) { margin-bottom: 1rem; }
+
+        img { cursor: pointer; max-width: 100%; }
+
+        .ig-caption {
+          font-family: montserrat;
+          padding: 0.5rem;
+        }
+      }
+    }
+  }
+}

@@ -4,8 +4,6 @@ const path = require("path");
 
 const paths = require("./paths");
 
-console.log(process.env.NODE_ENV);
-
 module.exports = {
   plugins: [
     new HtmlWebpackPlugin({

@@ -6,6 +6,7 @@ export default class Header extends React.Component {
     return (
       <nav id="header">
         <Link to="/">Home</Link>
+        <Link to="/social">Social</Link>
       </nav>
     )
   }
