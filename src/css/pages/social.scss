@@ -3,9 +3,18 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background: linear-gradient(#fdd, #fbb);
+  background: linear-gradient(#ddd, #bbb);
+  @include mobile {
+    display: inline;
+  }
 
-  > .media-col { margin: 0 1rem; }
+  > .media-col{
+    &:nth-of-type(2n+1) { margin: 0 1rem; }
+    @include mobile {
+      margin: 0 auto !important;
+      width: 80%;
+    }
+  }
 
   .media-col {
     flex: 1; min-width: 180px; max-width: 500px;
@@ -25,7 +34,10 @@
     &-twitter {
       overflow: hidden;
       > div {
-        max-height: 100%;
+        height: 100%;
+        > iframe {
+          height: 100% !important;
+        }
       }
     }
 
@@ -35,9 +47,13 @@
       .ig-post {
         box-shadow: 0 0 0.25rem rgba(0,0,0,0.3);
         background: white;
+        margin: 0 auto;
         &:not(:last-of-type) { margin-bottom: 1rem; }
 
-        img { cursor: pointer; max-width: 100%; }
+        img {
+          cursor: pointer;
+          max-width: 100%;
+        }
 
         .ig-caption {
           font-family: montserrat;

@@ -2,6 +2,8 @@ import React from "react";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 export default class Twitter extends React.Component {
+  constructor(props) { super(props); this.state = { height: props.height }}
+
   comopnentDidReceiveProps(props) {
     this.setState({height: props.height})
   }
@@ -10,7 +12,7 @@ export default class Twitter extends React.Component {
       <TwitterTimelineEmbed
         sourceType="profile"
         screenName="twitterdev"
-        options={{width: 500, height: this.props.height}}
+        options={{width: 500, height: this.state.height}}
       />
     )
   }

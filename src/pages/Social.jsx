@@ -15,7 +15,10 @@ export default class Social extends React.Component {
     setTimeout(this.updateDimensions, 2000);
   }
   componentWillUnmount() { window.removeEventListener('resize', this.updateDimensions); }
+
   updateDimensions() {
+    const id = Date.now();
+    this.updateId = id;
     const h = window.innerHeight, w = this.colRef.clientWidth;
     if (this.state.height !== h || this.state.width !== w)
       this.setState({ height: h, width: w })
@@ -40,7 +43,7 @@ export default class Social extends React.Component {
           <div className="logo-space">
             <img src={Logo_TW}/>
           </div>
-          <div className="media-col media-col-twitter" style={{maxHeight: this.state.height}}>
+          <div className="media-col media-col-twitter" style={{height: this.state.height}}>
             <Twitter height={this.state.height}/>
           </div>
         </div>

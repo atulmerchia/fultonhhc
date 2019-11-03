@@ -1,9 +1,7 @@
 import React from "react";
 
 export default class Facebook extends React.Component {
-  componentDidUpdate() {
-    window.FB && window.FB.XFBML.parse();
-  }
+  componentDidUpdate() { window.FB && window.FB.XFBML.parse(); }
 
   render() {
     return (
