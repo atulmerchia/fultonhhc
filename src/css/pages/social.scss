@@ -4,32 +4,41 @@
   flex-direction: row;
   justify-content: space-evenly;
   background: linear-gradient(#ddd, #bbb);
-  @include mobile {
-    display: inline;
+  @include mobile { display: inline; }
+
+  .platform-selector {
+    width: 100vw;
+    justify-content: space-evenly !important;
+
+    img:not(.active) { height: 25% !important; }
+  }
+
+  .logo-space {
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img { height: 50%; transition: height 0.2s ease; }
   }
 
   > .media-col{
-    &:nth-of-type(2n+1) { margin: 0 1rem; }
+    &:nth-of-type(2n) { margin: 0 1rem; }
     @include mobile {
       margin: 0 auto !important;
       width: 80%;
+      transition: height 0.4s ease;
+      overflow: hidden;
+      height: 100vh;
+      &:not(.active) { height: 0; }
     }
   }
 
   .media-col {
     flex: 1; min-width: 180px; max-width: 500px;
 
-    .logo-space {
-      height: 25vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    @include mobile { .logo-space { display: none; } }
 
-      img {
-        height: 50%;
-      }
-
-    }
 
     &-twitter {
       overflow: hidden;

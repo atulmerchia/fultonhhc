@@ -22,5 +22,5 @@ const apiRequest = function(method, path, body, params) {
 module.exports = {
   get: (path, params) => apiRequest("GET", path, undefined, params),
   post: (path, body, params) => apiRequest("POST", path, body, params),
-  buildQuery: queryObj => Object.values(queryObj).map(x => x.join("=")).join("&")
+  buildQuery: queryObj => Object.entries(queryObj).map(x => x.join('=')).join('&')
 }
