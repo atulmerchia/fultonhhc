@@ -15,8 +15,9 @@
 
     > span {
       position: absolute; left: 1rem;
-      transform: rotate(180deg); font-size: 3rem;
-      width: 4rem; height: 4rem;
+      transform: rotate(180deg);
+      font-size: 3rem; width: 4rem; height: 4rem;
+      @include mobile { font-size: 1.5rem; width: 2rem; height: 2rem; }
       display: flex; justify-content: center; align-items: center;
       border-radius: 50%;
       background: #000B;
