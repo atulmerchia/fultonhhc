@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import Icon from '@material-ui/core/Icon';
 
 export default class Header extends React.Component {
@@ -21,7 +21,7 @@ export default class Header extends React.Component {
           </Icon>
         </div>
         <NavLink activeClassName="active" exact={true} to="/">Home</NavLink>
-        <NavLink activeClassName="active" to="/outreach">Outreach</NavLink>
+        <NavLink activeClassName="active" to="/community">Community</NavLink>
         <NavLink activeClassName="active" to="/events">Events</NavLink>
         <NavLink activeClassName="active" to="/social">Social</NavLink>
         <NavLink activeClassName="active" to="/store">Store</NavLink>

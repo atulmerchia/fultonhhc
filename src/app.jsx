@@ -13,6 +13,7 @@ const App = () => {
       <div id="app-wrapper">
         <Switch>
           <Route exact path="/" component={Pages.Home} />
+          <Route path="/community" component={Pages.Community} />
           <Route path="/social" component={Pages.Social} />
           <Route path="/page-not-found" component={Pages.PageNotFound} />
           <Redirect from="/*" to="/page-not-found"/>

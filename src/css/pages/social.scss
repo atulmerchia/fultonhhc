@@ -13,11 +13,16 @@
     img:not(.active) { height: 25% !important; }
   }
 
+  .acct-name { font-weight: bold; font-size: 1.25rem; position: relative; top: -2.5rem; text-align: center; }
+
   .logo-space {
     height: 25vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    &:not(.platform-selector) { flex-direction: column; }
+    font-weight: bold;
+    font-size: 1.25rem;
 
     img { height: 50%; transition: height 0.2s ease; }
   }
@@ -38,7 +43,6 @@
     flex: 1; min-width: 180px; max-width: 500px;
 
     @include mobile { .logo-space { display: none; } }
-
 
     &-twitter {
       overflow: hidden;
@@ -65,7 +69,6 @@
         }
 
         .ig-caption {
-          font-family: montserrat;
           padding: 0.5rem;
         }
       }

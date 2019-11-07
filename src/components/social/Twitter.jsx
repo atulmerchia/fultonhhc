@@ -1,5 +1,5 @@
-import React from "react";
-import { TwitterTimelineEmbed } from "react-twitter-embed";
+import React from 'react';
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
 
 export default class Twitter extends React.Component {
   constructor(props) { super(props); this.state = { height: props.height }}
@@ -11,7 +11,7 @@ export default class Twitter extends React.Component {
     return (
       <TwitterTimelineEmbed
         sourceType="profile"
-        screenName="twitterdev"
+        screenName={this.props.profile}
         options={{width: 500, height: this.state.height}}
       />
     )

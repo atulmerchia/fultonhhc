@@ -7,11 +7,10 @@ class _Instagram extends React.Component {
     return (
       <div className="media-col media-col-ig" style={{maxHeight: this.props.height}}>
         {this.props.media.map(post => (
-          <div className="ig-post">
+          <div className="ig-post" key={post.id}>
             <img
-              key={post.id}
               src={post.displayImage}
-              alt={post.accessibilityCaption || 'Instagram picture'}
+              alt={post.accessibilityCaption || "Instagram picture"}
               onClick={_ => window.open(post.postLink)}
             />
             <div className="ig-caption">
@@ -28,7 +27,7 @@ const Instagram = withInstagramFeed(_Instagram);
 
 class Wrapper extends React.Component {
   render() {
-    return <Instagram {...this.props} account="origenstudio"/>
+    return <Instagram {...this.props} account={this.props.profile}/>
   }
 }
 

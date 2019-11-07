@@ -1,12 +1,12 @@
-console.log("Starting development server");
+console.log('Starting development server');
 
-const WebpackDevServer = require("webpack-dev-server");
-const webpack = require("webpack");
-const paths = require("./paths");
-const config = require("./webpack-dev-config.js");
+const WebpackDevServer = require('webpack-dev-server');
+const webpack = require('webpack');
+const paths = require('./paths');
+const config = require('./webpack-dev-config.js');
 
 const Port = 3000;
-const Host = "localhost";
+const Host = 'localhost';
 
 const options = {
   host: Host,

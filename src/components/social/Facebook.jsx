@@ -4,7 +4,6 @@ import API from 'lib/api';
 export default class Facebook extends React.Component {
   componentDidMount() {
     this.options = API.buildQuery({
-      href: encodeURIComponent("https://www.facebook.com/HealthHeartCoalition/?epa=SEARCH_BOX"),
       tabs: 'timeline',
       small_header: true,
       adapt_container_width: true,
@@ -17,13 +16,12 @@ export default class Facebook extends React.Component {
   render() {
     return (
       <iframe
-        src={`https://www.facebook.com/plugins/page.php?${this.options}&${API.buildQuery({ width: this.props.width, height: this.props.height})}`}
+        src={`https://www.facebook.com/plugins/page.php?${this.options}&${API.buildQuery({ href: this.props.profile, width: this.props.width, height: this.props.height})}`}
         width={this.props.width}
         height={this.props.height}
-        style={{border:'none',overflow:'hidden'}}
+        style={{border:'none', overflow:'hidden', marginBottom: -4}}
         scrolling="no"
-        frameborder="0"
-        allowTransparency="true"
+        frameBorder={0}
         allow="encrypted-media">
       </iframe>
     )

@@ -1,4 +1,4 @@
-console.log("Starting production server");
+console.log('Starting production server');
 
 const PORT = process.env.PORT || 3000;
 const express = require('express');

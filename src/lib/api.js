@@ -10,17 +10,17 @@ const headers = method => ({
 
 const apiRequest = function(method, path, body, params) {
   if(params) path += `?${module.exports.buildQuery(params)}`
-  const request = headers();
-  if (method !== "GET") headers.body = JSON.stringify(params);
+  const request = headers(method);
+  if (method !== 'GET') request.body = JSON.stringify(body);
   return fetch(API_URL + path, request)
-    .then(async res => {
-      if (res.ok) return JSON.parse(await res.json())
-      else throw JSON.parse(await res.json())
+    .then(res => {
+      if (res.ok) return res.json()
+      else throw res.json()
     })
 }
 
 module.exports = {
-  get: (path, params) => apiRequest("GET", path, undefined, params),
-  post: (path, body, params) => apiRequest("POST", path, body, params),
+  get: (path, params) => apiRequest('GET', path, undefined, params),
+  post: (path, body, params) => apiRequest('POST', path, body, params),
   buildQuery: queryObj => Object.entries(queryObj).map(x => x.join('=')).join('&')
 }
