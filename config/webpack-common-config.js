@@ -22,7 +22,6 @@ module.exports = {
     modules: ["node_modules"],
     alias: {
       components: path.resolve(paths.appSrc, "components"),
-      pages: path.resolve(paths.appSrc, "pages"),
       css: path.resolve(paths.appSrc, "css"),
       assets: path.resolve(paths.appAssets, "assets"),
       lib: path.resolve(paths.appSrc, "lib")

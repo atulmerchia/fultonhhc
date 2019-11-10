@@ -1,9 +1,9 @@
 import React from 'react';
-import { Carousel, Loading } from 'components';
+import { Carousel, Loading } from 'components/common';
 import API from 'lib/api';
 import helpers from 'lib/helpers';
 
-export default class Community extends React.Component {
+export default class Impact extends React.Component {
   constructor(props) {
     super(props);
     this.state = { index: -1 }
@@ -11,7 +11,7 @@ export default class Community extends React.Component {
   }
 
   componentDidMount() {
-    API.get('/community')
+    API.get('/impact')
       .then(data => Object.values(data).sort( (a,b) => a.title < b.title ? -1 : 1 ))
       .then(data => this.setState({index: helpers.rand(data.length), data}))
       .catch(err => window.alert(err.err))
@@ -27,10 +27,10 @@ export default class Community extends React.Component {
     const active = this.state.data[this.state.index];
 
     return (
-      <div className="community-events">
+      <div className="impact">
         <h1>{active.title}</h1>
         <div className="spacer spacer-top"/>
-        <Carousel imgs={active.img_urls} callback={i => this.next(i)}/>
+        <Carousel className="carousel" imgs={active.img_urls} callback={i => this.next(i)}/>
         <div className="spacer spacer-bottom"/>
         <p>{active.description}</p>
         <hr/>

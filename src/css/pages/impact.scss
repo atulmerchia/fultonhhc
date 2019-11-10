@@ -1,6 +1,5 @@
-.community-events {
+.impact {
   padding: 1rem 2rem;
-  background: linear-gradient(#ddd, #bbb);
 
   h2 {
     text-align: center;
@@ -20,6 +19,8 @@
     &-top { box-shadow: 0 -0.5rem 0.4rem -0.4rem maroon; }
     &-bottom { box-shadow: 0 0.5rem 0.4rem -0.4rem maroon; }
   }
+
+  .carousel { max-width: 112vh; margin: 0 auto; }
 
   .all-projects {
     width: 100%;

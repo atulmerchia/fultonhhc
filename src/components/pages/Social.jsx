@@ -1,6 +1,6 @@
 import React from 'react';
 import { Facebook, Instagram, Twitter } from 'components/social';
-import { Loading } from 'components';
+import { Loading } from 'components/common';
 import Logo_FB from 'assets/facebook.svg';
 import Logo_IG from 'assets/instagram.svg';
 import Logo_TW from 'assets/twitter.svg';
