@@ -1,0 +1,60 @@
+.checkout {
+  padding: 1rem 0 2rem;
+
+  h1 { margin: 2rem auto; padding: 1rem 0; }
+  h2 { margin: 0 auto 1rem; padding-bottom: 0.5rem; border-bottom: thick solid #282; }
+
+  > div, h1 {
+    width: 80%;
+    margin: auto;
+    max-width: 40rem;
+  }
+
+  .summary, .section, .submit {
+    background: #eee;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    max-width: 40rem;
+    border: thick solid #ccc;
+  }
+
+  .summary, .submit {
+    max-width: 38rem;
+    width: calc(80% - 2rem - 10px);
+    .row {
+      display: flex; justify-content: space-between;
+      .item {
+        white-space: nowrap;
+        &-name { overflow: hidden; text-overflow: ellipsis; }
+        &-price { min-width: fit-content; font-family: monospace; font-size: 1.25rem; padding-left: 1rem; }
+      }
+    }
+  }
+
+  .stripe-element {
+    padding: 1rem;
+    border: thick solid #ccc;
+    background: #eee;
+    margin-bottom: 2rem;
+    transition: border-color 0.4s ease;
+
+    &.StripeElement--complete { border-color: #282; }
+  }
+
+  label { display: flex; align-items: center; cursor: pointer; input { margin-right: 1rem; }}
+
+  .submit {
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+    color: #282;
+    border-color: #282;
+    font-weight: bold;
+    font-size: 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    &:hover { @include shadow; }
+    &:active { box-shadow: none; transition: none; }
+
+    :first-child { margin-right: 0.5rem; }
+    &.autorenew :last-child { animation: spinfinity 1.3s ease infinite; }
+  }
+}

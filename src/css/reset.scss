@@ -3,3 +3,4 @@ html, body, #root, #app-wrapper { display: flex; flex-direction: column; flex: 1
 :not(.scrollable)::-webkit-scrollbar { width: 0 !important; }
 
 .hidden { display: none; }
+@mixin shadow { box-shadow: 0 1rem 2rem 0.5rem rgba(0,0,0,0.14); }

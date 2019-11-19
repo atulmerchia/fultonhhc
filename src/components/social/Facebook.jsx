@@ -2,7 +2,8 @@ import React from 'react';
 import API from 'lib/api';
 
 export default class Facebook extends React.Component {
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     this.options = API.buildQuery({
       tabs: 'timeline',
       small_header: true,

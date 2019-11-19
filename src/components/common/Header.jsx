@@ -21,11 +21,10 @@ export default class Header extends React.Component {
               {this.state.open ? "close" : "menu"}
           </Icon>
         </div>
-        <NavLink className="no-mobile logo" exact={true} to="/">
+        <div className="no-mobile logo" exact={true} to="/">
           <img src={Logo}/>
-        </NavLink>
-        <NavLink className="mobile-only" activeClassName="active" exact={true} to="/">Home</NavLink>
-        <NavLink activeClassName="active" to="/resources">Resources</NavLink>
+        </div>
+        <NavLink activeClassName="active" exact={true} to="/">Home</NavLink>
         <NavLink activeClassName="active" to="/impact">Impact</NavLink>
         <NavLink activeClassName="active" to="/events">Events</NavLink>
         <NavLink activeClassName="active" to="/social">Social</NavLink>

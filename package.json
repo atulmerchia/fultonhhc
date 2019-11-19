@@ -38,12 +38,15 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jquery": "^3.4.1",
+    "moment": "^2.24.0",
     "origen-react-instagram-feed": "0.0.3",
     "react": "^16.9.0",
+    "react-big-calendar": "^0.23.0",
     "react-dom": "^16.9.0",
     "react-facebook": "^8.0.4",
     "react-fontawesome": "^1.6.1",
     "react-router-dom": "^5.1.2",
+    "react-stripe-elements": "^6.0.1",
     "react-twitter-embed": "^3.0.3"
   }
 }

@@ -1,0 +1,117 @@
+.events-page {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  .master-url {
+    direction: rtl;
+    padding: 0.5rem 1rem 0 0;
+    a {
+      text-decoration: none; color: blue;
+      display: inline-flex; justify-content: flex-end; align-items: center;
+      span { margin-left: 0.5rem; }
+    }
+  }
+
+  .calendar-wrapper {
+    width: 80vw;
+    height: 45vw;
+    max-width: 64rem;
+    max-height: 36rem;
+    margin: 100px auto 0;
+    position: relative;
+    background: white;
+
+    .rbc-toolbar {
+      position: absolute; bottom: 100%; width: 100%;
+      direction: rtl;
+      span { direction: ltr; text-align: left; }
+
+      @include mobile {
+        display: flex; flex-direction: column-reverse;
+        span { display: block; text-align: center; width: 100%; margin-top: 10px; }
+      }
+    }
+
+    @include mobile {
+      .rbc-date-cell {
+        display: flex;
+        > a { width: 100%; height: 100%; }
+      }
+
+      .rbc-row-content, .rbc-row-content .rbc-row {
+        height: 100%;
+
+        .rbc-row-segment { padding: 0 1px; }
+
+        .rbc-event {
+          color: transparent;
+          position: relative;
+          top: calc(-100% - 1px);
+          height: calc(100% + 1px);
+          z-index: -1;
+          background: #0804;
+          border-radius: 0;
+          align-self: stretch;
+
+        }
+      }
+
+      .rbc-month-header + .rbc-month-row {
+        .rbc-event {
+          height: 100%;
+          padding: 0;
+          width: calc(100% + 1px);
+        }
+      }
+    }
+  }
+
+  h1 { margin: 2rem 0 0; }
+  h1, .events-area > h2 { text-align: center; }
+  .events-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0 2rem 2rem;
+
+    .event-card {
+      width: 30%;
+      min-width: 20rem;
+      max-width: 30rem;
+      margin: 1rem;
+      display: inline-block;
+      flex: 1;
+      padding: 1rem 1rem 0.5rem;
+      @include shadow;
+
+      @include mobile {
+        box-shadow: none;
+        margin: 0;
+        width: 100%;
+        max-width: unset;
+        &:not(:last-of-type) { border-bottom: 1px solid rgba(0,0,0,0.5); }
+      }
+
+      .event-header {
+        > * { display: block; margin: 0; }
+        strong { display: flex; align-items: center; }
+        a {
+          align-self: stretch;
+          display: flex;
+          align-items: flex-end;
+          color: red;
+          text-decoration: none;
+        }
+      }
+      .event-body a {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        &:visited { color: blue; }
+        span { margin-right: 0.5rem; }
+      }
+      > div > * { margin-bottom: 0.5rem !important; }
+    }
+  }
+}

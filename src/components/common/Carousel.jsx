@@ -20,10 +20,8 @@ export default class Header extends React.Component {
   render() {
     return (
       <div className={this.props.className || ""}>
-        <div
-          className="lock-aspect lock-aspect-16x9"
-          style={{ backgroundImage: `url(${this.props.imgs[this.state.index]})` }}
-        >
+        <div className="lock-aspect lock-aspect-16x9">
+          <img src={this.props.imgs[this.state.index]}/>
           <div className="next" onClick={_ => this.next(-1)}>
             <Icon>forward</Icon>
           </div>

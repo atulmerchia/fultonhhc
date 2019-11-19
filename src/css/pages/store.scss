@@ -1,0 +1,91 @@
+.store {
+  margin: 2rem 10% 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  position: relative;
+
+  .checkout {
+    max-width: 72vw;
+    position: fixed;
+    right: 2rem;
+    bottom: 1rem;
+    padding: 0.5rem 1rem;
+    border: thick solid #282;
+    background: white;
+    color: #282;
+    z-index: 1;
+    font-weight: bold;
+    @include shadow;
+
+    .proceed { text-align: center; cursor: pointer; transition: all 0.4s ease; }
+    &:hover .proceed { margin-top: 0.5rem; padding-top: 0.5rem; border-top: medium solid #282; }
+
+
+    &:not(:hover) .checkout-contents { max-width: 0 !important; max-height: 0 !important }
+    .checkout-contents {
+      &.resizing { .item-name { overflow: visible !important; }}
+      overflow: hidden; transition: all 0.4s ease;
+      width: 100%;
+
+      .row {
+        display: flex; justify-content: space-between;
+        .item {
+          white-space: nowrap;
+          &-name { overflow: hidden; text-overflow: ellipsis; }
+          &-price { min-width: fit-content; font-family: monospace; font-size: 1.25rem; padding-left: 1rem; background: white; }
+        }
+      }
+    }
+  }
+
+  .product-card {
+    margin: 1rem 1% 1% 1%;
+    max-width: 15rem;
+    width: 20%;
+    min-width: 10rem;
+    display: inline-flex; flex-direction: column;
+    flex: 1;
+    padding: 1rem;
+
+    img { cursor: pointer; }
+
+    &:not(:hover) .product-details { max-height: 0!important; }
+    &:hover { @include shadow; }
+
+    .product-info {
+      display: flex; flex-direction: column;
+      flex: 1; justify-content: space-between;
+
+      > * { margin-top: 0.25rem; }
+      .product-name { font-size: 1em; margin-top: 0.5rem; }
+      .product-price { text-align: right; opacity: 0.6; }
+
+      a {
+        color: blue; text-decoration: none;  display: flex; align-items: center;
+        .url { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      }
+    }
+    .product-purchase {
+      direction: rtl;
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      background: #282; color: white;
+      margin-top: 0.5rem; text-align: center;
+
+      > span { padding: 0.5rem 0; overflow: hidden; white-space: nowrap; }
+      .one { width: 100%; transition: width 0.2s ease; }
+      .two { flex: 1; background: #822; }
+
+      &.active {
+        direction: ltr;
+        .one { width: 0; }
+      }
+    }
+    .product-details {
+      overflow: hidden; opacity: 0.8;
+      transition: max-height 0.2s ease;
+    }
+  }
+}

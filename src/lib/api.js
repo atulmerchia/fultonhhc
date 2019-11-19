@@ -3,8 +3,8 @@ const API_URL = process.env.API_URL;
 const headers = method => ({
   method: method,
   headers: {
-    "Content-Type": "application/json",
-    "Accept": "application/json"
+    "Content-Type": "Application/json",
+    "Accept": "Application/json"
   }
 })
 
@@ -16,6 +16,10 @@ const apiRequest = function(method, path, body, params) {
     .then(res => {
       if (res.ok) return res.json()
       else throw res.json()
+    }).catch(err => {
+      throw err.err
+        ? err
+        : Object.assign(err, { err: "An unexpected error has occurred" })
     })
 }
 

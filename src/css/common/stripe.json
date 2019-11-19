@@ -1,0 +1,15 @@
+{
+  "base": {
+    "fontSize": "14px",
+    "color": "#282",
+    "letterSpacing": "0.025em",
+    "fontFamily": "montserrat, arial, sans-serif",
+    "backgroundColor": "#eee",
+    "::placeholder": {
+      "color": "#555"
+    }
+  },
+  "invalid": {
+    "color": "#9e2146"
+  }
+}

@@ -18,8 +18,13 @@
     }
   }
 
-  h1 { text-align: center; margin-bottom: 0; }
+  h1 { text-align: center; }
   .cover { max-width: 90vh; margin: auto; }
+
+  .contact-info {
+    display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+    span { margin-right: 1rem; }
+  }
 
   .partner-area {
     display: flex;
@@ -28,18 +33,22 @@
 
     .partner-card {
       margin: 1rem 1% 1% 1%;
-      max-width: 23%;
-      min-width: 20rem;
+      max-width: 20rem;
+      width: 20%;
+      min-width: 15rem;
       display: inline-block;
+      flex: 1;
+
+      img { cursor: pointer; }
 
       .lock-aspect { border: 1px solid black; background-color: white; }
-      &:hover .lock-aspect { box-shadow: 0 0 0.5rem black; }
+      &:hover .lock-aspect { @include shadow; }
 
-      &.focused .partner-info { max-height: 100vh; }
+      &:not(.focused) .partner-info { max-height: 0 !important; }
       .partner-info {
         overflow: hidden;
         max-height: 0;
-        transition: max-height 1s ease;
+        transition: max-height 0.4s ease;
         em { margin-right: 1rem; }
 
         > * { margin-top: 0.25rem; }

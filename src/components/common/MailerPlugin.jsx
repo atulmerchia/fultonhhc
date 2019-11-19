@@ -1,40 +1,32 @@
 import React from 'react';
 import API from 'lib/api';
 import helpers from 'lib/helpers';
-import Icon from '@material-ui/core/icon'
+import Icon from '@material-ui/core/icon';
+import { Form, Input } from 'components/common';
 
 export default class MailerPlugin extends React.Component {
   constructor(props) {
     super(props);
     this.state = { buttonState: ['Send', 'send'], name: '', email: '', phone: '', text: ''}
-    this.Input = this.Input.bind(this);
     this.sendEmail = this.sendEmail.bind(this);
-  }
-
-  Input({name, placeholder, type, format}) {
-    return (
-      <div className="input-group">
-        <span>Your {name}</span>
-        <input
-          type={type}
-          placeholder={placeholder}
-          value={format ? format(this.state[name]) : this.state[name]}
-          onChange={({target: { value }}) => this.setState({ [name]: value })}
-        />
-      </div>
-    )
   }
 
   sendEmail() {
     if (this.state.buttonState[1] !== 'send' && this.state.buttonState[1] !== 'refresh') return;
+
+    const input = { ...this.form.getData(), text: this.state.text }
+    const keys = [ 'name', 'subject', 'email', 'phone', 'text' ];
+    const params = {};
+    for (var k of keys)
+      if (!input[k] || !input[k].trim().length) {
+        window.alert(`Invalid ${k}`);
+        return this.setState({ buttonState: ['Failed', 'refresh']})
+      }
+      else params[k] = input[k].trim();
+
     if (!window.confirm("Are you sure?")) return;
     this.setState({ buttonState: ['Sending', 'autorenew'] })
-    API.post('/message', {
-      name: this.state.name,
-      email: this.state.email,
-      phone: this.state.phone,
-      text: this.state.text
-    })
+    API.post('/message', params)
     .then(res => this.setState({buttonState: ['Received', 'check']}))
     .catch(err => this.setState({buttonState: ['Failed', 'refresh']}))
   }
@@ -42,10 +34,13 @@ export default class MailerPlugin extends React.Component {
   render() {
     return (
       <div className={`mailer-plugin ${this.props.className || ""}`}>
-        <div className="headers">
-          <this.Input placeholder="Johnny Appleseed" name="name" type="text"/>
-          <this.Input placeholder="example@gmail.com" name="email" type="email"/>
-          <this.Input placeholder="(XXX) XXX-XXXX" name="phone" type="tel" format={helpers.num2phone}/>
+        <div className="form headers">
+          <Form ref={r => { this.form = r}}>
+            <Input placeholder="Johnny Appleseed" name="name" type="text"/>
+            <Input placeholder="example@gmail.com" name="email" type="email"/>
+            <Input placeholder="(XXX) XXX-XXXX" name="phone" type="tel" format={helpers.num2phone}/>
+            <Input placeholder="No Subject" name="subject" prompt="subject" type="text" className="wide"/>
+          </Form>
         </div>
         <textarea
           ref={r => {this.msgbox = r}}
@@ -59,7 +54,7 @@ export default class MailerPlugin extends React.Component {
             this.setState({ text: target.value })
           }}
         />
-        <div className={"submit " + this.state.buttonState[1]} onClick={this.sendEmail}>
+        <div className={"submit " + this.state.buttonState[1]} onClick={this.sendEmail} tabIndex="0" onKeyPress={e => e.key === 'Enter' && this.sendEmail()}>
           <span>{this.state.buttonState[0]}</span>
           <Icon>{this.state.buttonState[1]}</Icon>
         </div>

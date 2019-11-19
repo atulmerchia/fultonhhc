@@ -7,31 +7,6 @@
   .headers {
       display: flex;
       flex-wrap: wrap;
-
-    .input-group {
-      display: inline-flex;
-      flex-direction: column;
-      margin: 0 auto 0.5rem;
-      padding: 0.5rem;
-      max-width: calc(100% - 1rem);
-
-      span { text-align: left; font-size: 0.8em; }
-
-      input {
-        outline: none;
-        border: none;
-        padding: 0.5rem 0.5rem 0;
-        border-bottom: 2px solid grey;
-        font-family: montserrat, arial, monospace;
-        font-size: 1.2em;
-        background: transparent;
-      }
-
-      &:focus-within {
-        span { color: #282; }
-        input { border-bottom-color: green; }
-      }
-    }
   }
 
   textarea {
@@ -40,7 +15,7 @@
     resize: none;
     outline: none;
     max-height: 50vh;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
     font-size: 1.2em;
     background: transparent;
   }
@@ -51,7 +26,7 @@
     padding: 0.5rem;
     color: green;
     box-shadow: 0 0 0.15rem black;
-    &.send:hover, &.refresh:active { box-shadow: 0 0 0.5rem black; }
+    &.send:hover, &.refresh:active { @include shadow; }
     transition: background 0.2s ease, box-shadow 0.2s ease;
     background: white;
     cursor: pointer;

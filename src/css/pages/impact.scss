@@ -1,5 +1,6 @@
 .impact {
   padding: 1rem 2rem;
+  background: linear-gradient(white, lightgray);
 
   h2 {
     text-align: center;
@@ -40,8 +41,8 @@
       cursor: pointer;
 
       &:hover {
-        background: #8F83;
-        box-shadow: 0 0 0.5rem rgba(0,0,0,0.5);
+        background: #FFF8;
+        @include shadow;
       }
     }
   }

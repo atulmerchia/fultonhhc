@@ -13,9 +13,11 @@ const App = () => {
       <div id="app-wrapper">
         <Switch>
           <Route exact path="/" component={Pages.Home} />
-          <Route exact path="/" component={Pages.Home} />
           <Route path="/impact" component={Pages.Impact} />
+          <Route path="/events" component={Pages.Events} />
           <Route path="/social" component={Pages.Social} />
+          <Route path="/store" component={Pages.Store} />
+          <Route path="/checkout" component={Pages.Checkout} />
           <Route path="/about" component={Pages.About} />
           <Route path="/page-not-found" component={Pages.PageNotFound} />
           <Redirect from="/*" to="/page-not-found"/>
