@@ -18,7 +18,7 @@
     font-weight: bold;
     @include shadow;
 
-    .proceed { text-align: center; cursor: pointer; transition: all 0.4s ease; }
+    .proceed { text-align: center; cursor: pointer; transition: all 0.4s ease; width: 100%; }
     &:hover .proceed { margin-top: 0.5rem; padding-top: 0.5rem; border-top: medium solid #282; }
 
 

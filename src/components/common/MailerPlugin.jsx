@@ -36,10 +36,14 @@ export default class MailerPlugin extends React.Component {
       <div className={`mailer-plugin ${this.props.className || ""}`}>
         <div className="form headers">
           <Form ref={r => { this.form = r}}>
-            <Input placeholder="Johnny Appleseed" name="name" type="text"/>
-            <Input placeholder="example@gmail.com" name="email" type="email"/>
-            <Input placeholder="(XXX) XXX-XXXX" name="phone" type="tel" format={helpers.num2phone}/>
-            <Input placeholder="No Subject" name="subject" prompt="subject" type="text" className="wide"/>
+            <div className="row">
+              <Input placeholder="Johnny Appleseed" name="name" type="text"/>
+              <Input placeholder="example@gmail.com" name="email" type="email"/>
+              <Input placeholder="(XXX) XXX-XXXX" name="phone" type="tel" format={helpers.num2phone}/>
+            </div>
+            <div className="row">
+              <Input placeholder="No Subject" name="subject" prompt="subject" type="text" className="wide"/>
+            </div>
           </Form>
         </div>
         <textarea

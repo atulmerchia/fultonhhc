@@ -14,7 +14,6 @@ export default class Checkout extends React.Component {
     super(props);
     this.state = { same_address: false, buttonState: BUTTONS.READY }
     this.submitPayment = this.submitPayment.bind(this);
-    window.refresh = _ => this.setState({ buttonState: BUTTONS.READY })
   }
 
   submitPayment() {

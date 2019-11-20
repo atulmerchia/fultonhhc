@@ -8,7 +8,7 @@ export default class Input extends React.Component {
       <div className={`input-group ${className || ""}`}>
         <span>{prompt || `Your ${name}`}</span>
         <input
-          type={type}
+          type={type || "text"}
           placeholder={placeholder || ""}
           value={form[name]}
           onChange={({target: { value }}) => update({ [name]: format ? format(value) : value })}

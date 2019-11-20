@@ -19,7 +19,7 @@
   }
 
   .summary, .submit {
-    max-width: 38rem;
+    max-width: calc(38rem - 10px);
     width: calc(80% - 2rem - 10px);
     .row {
       display: flex; justify-content: space-between;
