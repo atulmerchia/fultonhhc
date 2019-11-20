@@ -1,7 +1,7 @@
 import React from 'react';
 import API from 'lib/api';
 import helpers from 'lib/helpers';
-import Icon from '@material-ui/core/icon';
+import Icon from '@material-ui/core/Icon';
 import { Form, Input } from 'components/common';
 
 export default class MailerPlugin extends React.Component {

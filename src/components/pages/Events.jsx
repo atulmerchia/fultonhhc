@@ -1,6 +1,6 @@
 import React from 'react';
 import { Calendar, Loading } from 'components/common';
-import Icon from '@material-ui/core/icon'
+import Icon from '@material-ui/core/Icon'
 import API from 'lib/api';
 import helpers from 'lib/helpers';
 

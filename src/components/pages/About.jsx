@@ -4,7 +4,7 @@ import helpers from 'lib/helpers';
 import { Loading, MailerPlugin } from 'components/common';
 import DefaultImage from 'assets/partner.svg';
 import Logo from 'assets/logo.svg';
-import Icon from '@material-ui/core/icon';
+import Icon from '@material-ui/core/Icon';
 
 export default class About extends React.Component {
   constructor(props) {

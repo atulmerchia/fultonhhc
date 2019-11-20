@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "build": "npm run clean && webpack --config config/webpack-prod-config.js",
-    "clean": "rm -rf build/ && npm i && npm i --only=dev && ls node_modules/@material-ui/",
+    "clean": "rm -rf build/",
     "start": "node config/server-selector.js"
   },
   "devDependencies": {

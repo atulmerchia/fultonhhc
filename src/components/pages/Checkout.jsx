@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Input, Stripe } from 'components/common'
-import Icon from '@material-ui/core/icon'
+import Icon from '@material-ui/core/Icon'
 import helpers from 'lib/helpers'
 import API from 'lib/api'
 
