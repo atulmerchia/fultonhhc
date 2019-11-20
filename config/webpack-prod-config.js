@@ -1,8 +1,8 @@
 const path = require('path');
-
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+const TerserPlugin = require("terser-webpack-plugin");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const paths = require('./paths');
@@ -19,10 +19,10 @@ module.exports = merge(common, {
     path: paths.appBuild,
     publicPath: "/"
   },
-  plugins: [
-    new UglifyJSPlugin(),
-    new ExtractTextPlugin("styles.css")
-  ],
+  plugins: [ new ExtractTextPlugin("styles.css") ],
+  optimization: {
+    minimizer: [new TerserPlugin({ sourceMap: true })],
+  },
   module: {
     rules: [
       {
