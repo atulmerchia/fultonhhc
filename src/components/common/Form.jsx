@@ -10,8 +10,8 @@ export default class Form extends React.Component {
 
   getData() { return this.state; }
   clone(e) {
-    if (!e.type) return e;
-    return e.type.name === 'Input'
+    if (!e.props) return e;
+    return e.props.name
       ? React.cloneElement(e, { form: this.state, update: this.setState })
       : React.cloneElement(e, { children: React.Children.map(e.props.children, this.clone )})
   }

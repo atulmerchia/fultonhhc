@@ -54,7 +54,6 @@ export default class Store extends React.Component {
       this.refs.cart.classList.toggle('resizing');
       this.refs.cart.style.maxWidth = `${this.refs.cart.scrollWidth}px`;
       this.refs.cart.style.maxHeight = `${this.refs.cart.scrollHeight}px`;
-      console.log(this.refs.cart.classList);
       setTimeout(_ => this.refs.cart.classList.toggle('resizing'), 100);
     })
   }

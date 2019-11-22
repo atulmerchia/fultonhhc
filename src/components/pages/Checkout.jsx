@@ -42,8 +42,6 @@ export default class Checkout extends React.Component {
     }
     if (!stripe_billing.address_line2) delete stripe_billing.address_line2;
 
-    console.log(stripe_billing);
-
     const billing = {
       address_line1: stripe_billing.address_line1,
       address_line2: stripe_billing.address_line2,
@@ -53,8 +51,6 @@ export default class Checkout extends React.Component {
     }
     if (!billing.address_line2) delete billing.address_line2;
 
-    console.log(billing);
-
     const shipping = this.state.same_address ? billing : {
       address_line1: data.shipping_street1.trim(),
       address_line2: (data.shipping_street2 || "").trim(),
@@ -63,8 +59,6 @@ export default class Checkout extends React.Component {
       zip: parseInt(data.shipping_zip),
     }
     if (!shipping.address_line2) delete shipping.address_line2;
-
-    console.log(shipping);
 
     this.stripe.generateToken({
       name: data.name.trim(),
