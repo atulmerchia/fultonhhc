@@ -1,6 +1,7 @@
-import React from 'react';
-import API from 'lib/api';
-import { Loading } from 'components/common';
+import React from 'react'
+import API from 'lib/api'
+import { Loading } from 'components/common'
+import Parse from 'react-html-parser'
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -23,12 +24,12 @@ export default class Home extends React.Component {
         <h2>{this.state.data.subtitle}</h2>
         <div className="jumbotron">
           <div className="lock-aspect lock-aspect-16x9">
-            <img src={this.state.data.cover_image} />
+            <img src={this.state.data.cover_images[0]} />
           </div>
         </div>
-        <pre>
-          {this.state.data.text}
-        </pre>
+        <div>
+          {Parse(this.state.data.text)}
+        </div>
       </div>
     )
   }
