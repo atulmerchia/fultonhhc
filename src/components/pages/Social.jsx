@@ -33,7 +33,7 @@ export default class Social extends React.Component {
     const id = Date.now();
     this.updateId = id;
     setTimeout(_ => {
-      if (this.updateId !== id || this.state.active == -1) return;
+      if (this.updateId !== id || this.state.active == -1 || !this.colRef) return;
       const h = window.innerHeight, w = this.colRef.clientWidth;
       if (this.state.height !== h || this.state.width !== w)
         this.setState({ height: h, width: w })
