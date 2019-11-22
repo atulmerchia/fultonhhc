@@ -36,21 +36,35 @@ export default class Store extends React.Component {
     }, 100)
   }
 
-  addToCart(e, id, p) {
-    e = e.target.parentNode.classList;
+  addToCart(e, id, p, amt) {
+    e.stopPropagation();
+
+    if (amt === '+') amt = 1;
+    else if (amt === '-') amt = -1;
+    else return;
+
+    const two = e.currentTarget.children[1];
+
+    e = e.currentTarget.classList;
     e.toggle("active");
     setTimeout(_ => e.toggle('active'), 600)
 
+    let { cart } = this.state;
+    if (cart[id] && cart[id].count + amt === 0) { delete cart[id]; }
+    else cart = Object.assign(cart, {
+      [id]: {
+        name: p.name,
+        price: p.price,
+        count: (cart[id] || { count: 0 }).count + amt
+      }
+    })
+
     this.setState({
-      cart: Object.assign(this.state.cart, {
-        [id]: {
-          name: p.name,
-          price: p.price,
-          count: (this.state.cart[id] || { count: 0 }).count + 1
-        }
-      }),
-      total: this.state.total + p.price
+      cart: cart,
+      total: this.state.total + amt * p.price
     }, _ => {
+      two.innerText = amt === 1 ? "Added!" : "Removed";
+      if (!this.refs.cart) return;
       this.refs.cart.classList.toggle('resizing');
       this.refs.cart.style.maxWidth = `${this.refs.cart.scrollWidth}px`;
       this.refs.cart.style.maxHeight = `${this.refs.cart.scrollHeight}px`;
@@ -71,8 +85,18 @@ export default class Store extends React.Component {
               <div className="product-name">{p.name}</div>
               <div className="product-price">{helpers.formatDollar(p.price)}</div>
             </div>
-            <div className="product-purchase">
-              <span className="one" onClick={e => this.addToCart(e, id, p)}>Add to Cart</span>
+            <div className="product-purchase" onClick={e => this.addToCart(e, id, p, e.target.id)}>
+              <span className="one">
+                {
+                  (this.state.cart[id] || {}).count
+                  ? <>
+                    <span id="-">-</span>
+                    <span id="0" className="primary">{this.state.cart[id].count}</span>
+                    <span id="+">+</span>
+                    </>
+                  : <span id="+" className="primary">Add to Cart</span>
+                }
+                </span>
               <span className="two">Added!</span>
             </div>
             {p.details
@@ -108,3 +132,5 @@ export default class Store extends React.Component {
     )
   }
 }
+
+// TODO: Allow object removal
