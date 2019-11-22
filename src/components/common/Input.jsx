@@ -1,19 +1,16 @@
 import React from 'react';
 
-export default class Input extends React.Component {
-  render() {
-    const { name, placeholder, prompt, type, format, className, form, update } = this.props;
+const Input = ({ className, prompt, name, type, placeholder, form, format, other }) => (
+  <div className={`input-group ${className || ""}`}>
+    <span>{prompt || `Your ${name}`}</span>
+    <input
+      type={type}
+      placeholder={placeholder || ""}
+      value={form[name]}
+      onChange={({target: { value }}) => update({ [name]: format ? format(value) : value })}
+      {...other}
+    />
+  </div>
+)
 
-    return (
-      <div className={`input-group ${className || ""}`}>
-        <span>{prompt || `Your ${name}`}</span>
-        <input
-          type={type || "text"}
-          placeholder={placeholder || ""}
-          value={form[name]}
-          onChange={({target: { value }}) => update({ [name]: format ? format(value) : value })}
-        />
-      </div>
-    )
-  }
-}
+export default Input
