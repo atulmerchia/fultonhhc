@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Input = ({ className, prompt, name, type, placeholder, form, format, other }) => (
+  !form ? <></> :
   <div className={`input-group ${className || ""}`}>
     <span>{prompt || `Your ${name}`}</span>
     <input
