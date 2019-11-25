@@ -11,10 +11,11 @@ export default class MailerPlugin extends React.Component {
     this.sendEmail = this.sendEmail.bind(this);
   }
 
-  sendEmail() {
+  sendEmail(data) {
     if (this.state.buttonState[1] !== 'send' && this.state.buttonState[1] !== 'refresh') return;
 
-    const input = { ...this.form.getData(), text: this.state.text }
+    console.log(e);
+    const input = { ...data, text: this.state.text }
     const keys = [ 'name', 'subject', 'email', 'phone', 'text' ];
     const params = {};
     for (var k of keys)
@@ -33,9 +34,9 @@ export default class MailerPlugin extends React.Component {
 
   render() {
     return (
-      <div className={`mailer-plugin ${this.props.className || ""}`}>
-        <div className="form headers">
-          <Form ref={r => { this.form = r}}>
+      <Form onSubmit={this.sendEmail}>
+        <div className={`mailer-plugin ${this.props.className || ""}`}>
+          <div className="form headers">
             <div className="row">
               <Input placeholder="Johnny Appleseed" name="name" type="text"/>
               <Input placeholder="example@gmail.com" name="email" type="email"/>
@@ -44,25 +45,28 @@ export default class MailerPlugin extends React.Component {
             <div className="row">
               <Input placeholder="No Subject" name="subject" prompt="subject" type="text" className="wide"/>
             </div>
-          </Form>
+          </div>
+          <textarea
+            ref={r => {this.msgbox = r}}
+            className="scrollable"
+            placeholder="Your message"
+            rows={4}
+            value={this.state.text}
+            onChange={({target}) => {
+              target.style.height = 'inherit';
+              target.style.height = `${target.scrollHeight}px`;
+              this.setState({ text: target.value })
+            }}
+          />
+          <div className={"submit " + this.state.buttonState[1]}>
+            <span>{this.state.buttonState[0]}</span>
+            <Icon>{this.state.buttonState[1]}</Icon>
+            <input className="hidden-submit" type="submit"/>
+          </div>
         </div>
-        <textarea
-          ref={r => {this.msgbox = r}}
-          className="scrollable"
-          placeholder="Your message"
-          rows={4}
-          value={this.state.text}
-          onChange={({target}) => {
-            target.style.height = 'inherit';
-            target.style.height = `${target.scrollHeight}px`;
-            this.setState({ text: target.value })
-          }}
-        />
-        <div className={"submit " + this.state.buttonState[1]} onClick={this.sendEmail} tabIndex="0" onKeyPress={e => e.key === 'Enter' && this.sendEmail()}>
-          <span>{this.state.buttonState[0]}</span>
-          <Icon>{this.state.buttonState[1]}</Icon>
-        </div>
-      </div>
+      </Form>
     )
   }
 }
+
+// onClick={_ => this.form.dispatchEvent(new Event("submit"))} tabIndex="0" onKeyPress={e => e.key === 'Enter' && this.form.dispatchEvent(new Event("submit"))}

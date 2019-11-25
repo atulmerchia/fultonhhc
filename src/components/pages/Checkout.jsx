@@ -16,14 +16,13 @@ export default class Checkout extends React.Component {
     this.submitPayment = this.submitPayment.bind(this);
   }
 
-  submitPayment() {
+  submitPayment(data) {
     if (this.state.buttonState[1]) return;
     this.setState({ buttonState: BUTTONS.BUSY })
 
     let required = ['name', 'email', 'phone', 'billing_street1', 'billing_city', 'billing_state', 'billing_zip']
     if (!this.state.same_address) required = required.concat(['shipping_street1', 'shipping_city', 'shipping_state', 'shipping_zip'])
 
-    const data = this.form.getData();
     data.phone = parseInt(`${data.phone}`.replace(/\D/g, ""));
     if (isNaN(data.phone)) data.phone = null;
     for (var k of required) {
@@ -102,7 +101,7 @@ export default class Checkout extends React.Component {
         <h1>Payment Form</h1>
         <Stripe stripeRef={r => { this.stripe = r }}/>
         <div className="form">
-          <Form ref={r => {this.form = r}}>
+          <Form onSubmit={this.submitPayment}>
             <div className="section">
               <h2>Personal Information</h2>
               <div className="row">
@@ -149,11 +148,12 @@ export default class Checkout extends React.Component {
               </div>
               </>)}
             </div>
+            <div className={"submit " + this.state.buttonState[1]}>
+              <span>{this.state.buttonState[0]}</span>
+              {this.state.buttonState[1] ? <Icon>{this.state.buttonState[1]}</Icon> : <></>}
+              <input className="hidden-submit" type="submit"/>
+            </div>
           </Form>
-        </div>
-        <div className={"submit " + this.state.buttonState[1]} tabIndex="0" onClick={this.submitPayment} onKeyPress={e => e.key === 'Enter' && this.submitPayment()}>
-          <span>{this.state.buttonState[0]}</span>
-          {this.state.buttonState[1] ? <Icon>{this.state.buttonState[1]}</Icon> : <></>}
         </div>
       </div>
     )

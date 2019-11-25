@@ -20,7 +20,7 @@
 
   .summary, .submit {
     max-width: calc(38rem - 10px);
-    width: calc(80% - 2rem - 10px);
+    &:not(.submit) { width: calc(80% - 2rem - 10px); }
     .row {
       display: flex; justify-content: space-between;
       .item {
@@ -44,6 +44,7 @@
   label { display: flex; align-items: center; cursor: pointer; input { margin-right: 1rem; }}
 
   .submit {
+    position: relative;
     cursor: pointer;
     transition: box-shadow 0.2s ease;
     color: #282;

@@ -1,17 +1,25 @@
 import React from 'react';
 
-const Input = ({ className, prompt, name, type, placeholder, form, update, format, other }) => (
-  !form ? <></> :
-  <div className={`input-group ${className || ""}`}>
-    <span>{prompt || `Your ${name}`}</span>
-    <input
-      type={type}
-      placeholder={placeholder || ""}
-      value={form[name]}
-      onChange={({target: { value }}) => update({ [name]: format ? format(value) : value })}
-      {...other}
-    />
-  </div>
-)
+export default class Input extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: props.defaultValue || "" };
+  }
 
-export default Input
+  render() {
+    const props = this.props;
+    return (
+      <div className={`input-group ${props.className || ""}`}>
+        <span>{props.prompt || `Your ${props.name}`}</span>
+        <input
+          name={props.name}
+          type={props.type}
+          placeholder={props.placeholder || ""}
+          value={this.state.value}
+          onChange={({target: { value }}) => this.setState({ value: props.format ? props.format(value) : value })}
+          {...props.other}
+        />
+      </div>
+    )
+  }
+}

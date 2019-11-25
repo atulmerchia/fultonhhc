@@ -1,20 +1,19 @@
-import React from 'react';
+import React from 'react'
 
-export default class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.clone = this.clone.bind(this);
-    this.setState = this.setState.bind(this);
-  }
-
-  getData() { return this.state; }
-  clone(e) {
-    if (!e.props) return e;
-    return e.props.name
-      ? React.cloneElement(e, { form: this.state, update: this.setState })
-      : React.cloneElement(e, { children: React.Children.map(e.props.children, this.clone )})
-  }
-
-  render() { return <>{React.Children.map(this.props.children, this.clone)}</> }
+const getData = target => {
+  let obj = {};
+  for (var k of target) obj[k.name] = k.value;
+  return obj;
 }
+
+const Form = props => (
+  <form
+    onSubmit={e => {
+      e.preventDefault();
+      props.onSubmit(getData(e.currentTarget))
+    }}>
+    {props.children}
+  </form>
+)
+
+export default Form;
