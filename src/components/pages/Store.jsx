@@ -133,4 +133,4 @@ export default class Store extends React.Component {
   }
 }
 
-// TODO: Allow object removal from checkout
+// TODO: Allow object removal from checkout, better UI

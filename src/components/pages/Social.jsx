@@ -17,6 +17,7 @@ export default class Social extends React.Component {
     this.state = { width: 500, height: window.innerHeight, active: -1 };
     this.updateDimensions = this.updateDimensions.bind(this);
   }
+
   componentDidMount() {
     API.get('/social')
       .then(data => this.setState({
@@ -27,6 +28,7 @@ export default class Social extends React.Component {
       .catch(err => window.alert(err.err))
     window.addEventListener('resize', this.updateDimensions);
   }
+
   componentWillUnmount() { window.removeEventListener('resize', this.updateDimensions); }
 
   updateDimensions() {
@@ -35,7 +37,7 @@ export default class Social extends React.Component {
     setTimeout(_ => {
       if (this.updateId !== id || this.state.active == -1 || !this.colRef) return;
       const h = window.innerHeight, w = this.colRef.clientWidth;
-      if (this.state.height !== h || this.state.width !== w)
+      if (this.state.height !== h || this.state.width !== w) 
         this.setState({ height: h, width: w })
     }, 100)
   }
