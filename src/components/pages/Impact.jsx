@@ -14,7 +14,9 @@ export default class Impact extends React.Component {
   componentDidMount() {
     API.get('/impact')
       .then(data => Object.values(data).sort( (a,b) => a.title < b.title ? -1 : 1 ))
-      .then(data => this.setState({index: helpers.rand(data.length), data}))
+      .then(data => this.setState({index: helpers.rand(data.length), data},
+        _ => this.state.data.forEach( ({ img_urls }) => img_urls.forEach(img => (new Image()).src = img))
+      ))
       .catch(err => window.alert(err.err))
   }
 
